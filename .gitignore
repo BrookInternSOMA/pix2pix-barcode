@@ -1,0 +1,14 @@
+.DS_Store
+*.pyc
+tags
+test
+models
+.idea
+barcode/
+barcode_train/
+barcode_test/
+photos/
+barcode_second/
+barcode_second_train/
+barcode_second_test/
+photos_second/
