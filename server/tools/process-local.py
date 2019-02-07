@@ -37,7 +37,7 @@ def main():
     output_instance = dict(output=output_value, key="0")
 
     b64data = output_instance["output"].decode().encode("ascii")
-    b64data += "=" * (-len(b64data) % 4)
+    b64data += b"=" * (-len(b64data) % 4)
     output_data = base64.urlsafe_b64decode(b64data)
 
     with open(a.output_file, "wb") as f:

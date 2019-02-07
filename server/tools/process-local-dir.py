@@ -25,16 +25,17 @@ def allfiles():
 
 def main():
 
-    for file in allfiles():
-        with open(file, 'rb') as f:
-            input_data = f.read()
+    with tf.Session() as sess:
+        saver = tf.train.import_meta_graph(a.model_dir + "/export.meta")
+        saver.restore(sess, a.model_dir + "/export")
 
-        input_instance = dict(input=base64.urlsafe_b64encode(input_data).decode('utf-8'), key="0")
-        input_instance = json.loads(json.dumps(input_instance))
+        for file in allfiles():
+            with open(a.input_dir + file, 'rb') as f:
+                input_data = f.read()
 
-        with tf.Session() as sess:
-            saver = tf.train.import_meta_graph(a.model_dir + "/export.meta")
-            saver.restore(sess, a.model_dir + "/export")
+            input_instance = dict(input=base64.urlsafe_b64encode(input_data).decode('utf-8'), key="0")
+            input_instance = json.loads(json.dumps(input_instance))
+
             input_vars = json.loads(tf.get_collection("inputs")[0])
             output_vars = json.loads(tf.get_collection("outputs")[0])
             input = tf.get_default_graph().get_tensor_by_name(input_vars["input"])
@@ -43,13 +44,15 @@ def main():
             input_value = np.array(input_instance["input"])
             output_value = sess.run(output, feed_dict={input: np.expand_dims(input_value, axis=0)})[0]
 
-        output_instance = dict(output=output_value, key="0")
+            output_instance = dict(output=output_value, key="0")
 
-        b64data = output_instance["output"].decode().encode("ascii")
-        b64data += "=" * (-len(b64data) % 4)
-        output_data = base64.urlsafe_b64decode(b64data)
+            b64data = output_instance["output"].decode().encode("ascii")
+            b64data += b"=" * (-len(b64data) % 4)
+            output_data = base64.urlsafe_b64decode(b64data)
 
-        with open(a.output_dir + file, "wb") as f:
-            f.write(output_data)
+            with open(a.output_dir + file, "wb") as f:
+                f.write(output_data)
+
+            print("Completed ", file)
 
 main()
