@@ -12,8 +12,8 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model_dir", required=True, help="directory containing exported model")
-parser.add_argument("--input_dir", required=True, help="input PNG image file")
-parser.add_argument("--output_dir", required=True, help="output PNG image file")
+parser.add_argument("--input_dir", required=True, help="directory containing input image file")
+parser.add_argument("--output_dir", required=True, help="output directory")
 a = parser.parse_args()
 
 def allfiles():

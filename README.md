@@ -148,6 +148,28 @@ The test run will output an HTML file at `barcode_test/index.html` that shows in
 
 <img src="docs/test-html.png" width="300px"/>
 
+## Exporting
+
+Testing is done with `--mode export`.  You should specify the export directory to use with `--model_dir`:
+
+```sh
+python server/tools/process-local.py \
+  --mode export \
+  --model_dir your_export_dir \
+  --input_file your_input_image_filename \
+  --output_file output_filename \
+```
+
+You can use this for many inputs
+
+```sh
+python server/tools/process-local-dir.py \
+  --mode export \
+  --model_dir your_export_dir \
+  --input_dir directory_containing_your_input_images \
+  --output_dir output_directory \
+```
+
 ## Citation
 If you use this code for your research, please cite the paper this code is based on: <a href="https://arxiv.org/pdf/1611.07004v1.pdf">Image-to-Image Translation Using Conditional Adversarial Networks</a>:
 
