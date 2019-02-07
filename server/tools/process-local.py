@@ -15,6 +15,7 @@ parser.add_argument("--input_file", required=True, help="input PNG image file")
 parser.add_argument("--output_file", required=True, help="output PNG image file")
 a = parser.parse_args()
 
+
 def main():
     with open(a.input_file, 'rb') as f:
         input_data = f.read()
