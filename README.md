@@ -150,7 +150,16 @@ The test run will output an HTML file at `barcode_test/index.html` that shows in
 
 ## Exporting
 
-Testing is done with `--mode export`.  You should specify the export directory to use with `--model_dir`:
+Exporting is done with `--mode export`.  You should specify the export directory to use with `--model_dir`:
+
+```sh
+python pix2pix.py \
+  --mode export \
+  --output_dir your_export \
+  --checkpoint your_checkpoint
+```
+
+You use this exporting model by below command 
 
 ```sh
 python server/tools/process-local.py \
