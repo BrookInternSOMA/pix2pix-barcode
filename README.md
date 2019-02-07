@@ -146,7 +146,7 @@ The testing mode will load some of the configuration options from the checkpoint
 
 The test run will output an HTML file at `barcode_test/index.html` that shows input/output/target image sets:
 
-<img src="docs/test-html.png" width="300px"/>
+<img src="docs/test-index-html.png" width="300px"/>
 
 ## Exporting
 
