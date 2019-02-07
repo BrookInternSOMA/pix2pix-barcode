@@ -126,7 +126,7 @@ You can look at the loss and computation graph using tensorboard:
 tensorboard --logdir=barcode_train
 ```
 
-<img src="docs/tensorboard-scalar.png" width="250px"/> <img src="docs/tensorboard-graph.png" width="250px"/>
+<img src="docs/tensorboard-scalar.png" width="250px"/>
 
 If you wish to write in-progress pictures as the network is training, use `--display_freq 50`.  This will update `barcode_train/index.html` every 50 steps with the current training inputs and outputs.
 
