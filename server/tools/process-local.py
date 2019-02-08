@@ -43,4 +43,6 @@ def main():
     with open(a.output_file, "wb") as f:
         f.write(output_data)
 
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 main()

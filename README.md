@@ -163,7 +163,6 @@ You use this exporting model by below command
 
 ```sh
 python server/tools/process-local.py \
-  --mode export \
   --model_dir your_export_dir \
   --input_file your_input_image_filename \
   --output_file output_filename \
@@ -173,7 +172,6 @@ You can use this for many inputs
 
 ```sh
 python server/tools/process-local-dir.py \
-  --mode export \
   --model_dir your_export_dir \
   --input_dir directory_containing_your_input_images \
   --output_dir output_directory \
